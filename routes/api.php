@@ -21,6 +21,9 @@ $api->version('v1', function ($api) {
         $api->post('login', [
             'uses' => 'LoginController@login',
         ]);
+        $api->get('projects/list', [
+            'uses' => 'ProjectController@index',
+        ]);
         // Routes within this version group will require authentication.
         $api->group(['middleware' => ['jwt.auth'], 'prefix' => 'projects'], function ($api) {
             $api->get('', [
